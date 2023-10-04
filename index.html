@@ -1,74 +1,80 @@
 <!doctype html>
 <html lang="pt-br">
+<head>
+	<!--		GOOGLE FONTS-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-	<head>
-		<!--		GOOGLE FONTS-->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Jogo Adivinhação</title>
+	<link rel="stylesheet" href="style.css">
+	<!--		GOOGLE FONTS-->
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Montserrat:wght@300;400;700&family=Public+Sans:wght@300;400;800&family=Roboto:wght@400;700&display=swap"
+				rel="stylesheet">
+</head>
+<body>
 
-		<meta charset="UTF-8">
-		<meta name="viewport"
-					content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Jogo Adivinhação</title>
-		<link rel="stylesheet" href="style.css">
-		<!--		GOOGLE FONTS-->
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Montserrat:wght@300;400;700&family=Public+Sans:wght@300;400;800&family=Roboto:wght@400;700&display=swap"
-					rel="stylesheet">
-	</head>
+<main>
 
-	<body>
+	<div class="screen1">
+		<h1>Jogo da Adivinhação</h1>
+		<p>Adivinhe o número entre 0 e 10!</p>
+		<form>
+			<input type="text" maxlength="1" id="inNumero">
+			<button onclick="jogar(event)" id="btnJogar">Tentar</button>
+		</form>
+	</div>
 
-		<main>
+	<div class="screen2 hide">
+		<h2>Acertou em 3 Vezes</h2>
+		<button>Jogar novamente</button>
+	</div>
+	<h1 id="idResposta"></h1>
 
-			<div class="screen1 ">
-				<h1>Jogo da Adivinhação</h1>
-				<p>Adivinhe o número entre 0 e 10!</p>
-				<form>
-					<input type="text" maxlength="1" id="inNumero">
-					<button onclick="jogar(event)" id="btnJogar">Tentar</button>
-				</form>
-			</div>
+</main>
 
-			<div class="screen2 hide">
-				<h2>Acertou em 3 Vezes</h2>
-				<button>Jogar novamente</button>
-			</div>
+<script type="text/javascript">	<!--src="script.js"-->
 
-			<h1 id="idResposta"></h1>
+// VAI CRIAR UM NUMERO RANDOMICO ASSIM Q COMECAR - ANTES DA FUNÇÃO
 
-		</main>
+const randomNumber = Math.round(Math.random() * 10);
+let xTentavivas = 1;
 
-	<script type="text/javascript">	<!--src="script.js"-->
+function jogar(evento){
 
-		// VAI CRIAR UMNUMERO RANDOMICO ASSIM Q COMECAR - ANTES DA FUNÇÃO
+  evento.preventDefault();
 
-		const randomNumber = Math.round(Math.random() * 10);
+  const inNumero = document.querySelector("#inNumero");
 
-		let xTentavivas = 1;
+  // const inNumero = document.getElementById("inNumero");
+  // const numero   = inNumero.value;
 
-		function jogar(evento){
+  if(Number(inNumero.value) === randomNumber){  // Number para transformar em numero
 
-    	evento.preventDefault();
+    document.querySelector(".screen1").classList.add("hide");
+    document.querySelector(".screen2").classList.remove("hide");
 
-			const inNumero = document.getElementById("inNumero");
-      const numero = inNumero.value;
+    // document.getElementById("screen1").classList.add("hide");    // PARA ADICIONAR A CLASSE HIDE(ESCONDER).
 
+    // document.getElementById("screen2").classList.remove("hide"); // PARA REMOVER A CLASSE HIDE(ESCONDER).
 
-      // Number para transformar em numero
-      if(Number(numero) )
+		document.querySelector(".screen2 h2").innerText = `vc acertou em: ${xTentavivas} Tentativas`
+		// alert("Te amo")
 
+  }else{
+    console.log("Voce Errou!!!");
+  }
 
-      // console.log(xTentavivas)
-      // console.log("Numero: " + numero)
+  xTentavivas++;  	// O INCREMENTO SEMPRE FICA NO FINAL DA APLICAÇÃO
 
-			// O INCREMENTO SEMPRE FICA NO FINAL DA APLICAÇÃO
-      xTentavivas++;
-		}
+}
 
-	</script>
+</script>
 
-	</body>
+</body>
 
 </html>
 
