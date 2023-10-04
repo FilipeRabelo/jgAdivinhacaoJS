@@ -4,12 +4,16 @@
   box-sizing: border-box;
 }
 
+
 :root{
   font-size: 62.5%;
 }
 
+
 body{
-  background: linear-gradient(288deg, #C2E9FB 0%, #A1C4FD 100%);
+  background-color: black;
+
+  /*background: linear-gradient(288deg, #C2E9FB 0%, #A1C4FD 100%);*/
   font-size: 1.6rem;
 
   /*alinhamento ao meio*/
@@ -18,10 +22,32 @@ body{
   height: 100vh;
 }
 
+
 /*MUITO IMPORTANTE*/
 body, button, input{
   font-family: "DM Sans", sans-serif;
 }
+
+
+button{
+  background-color: #7879F1;
+  color: white;
+  font-weight: bold;
+  border-radius: 0 .4rem .4rem 0;
+  cursor: pointer;
+
+  transition: background .3s;
+}
+
+button:hover{
+  background-color: #6363ce;
+}
+
+
+.hide{
+  display: none;
+}
+
 
 main{
   border-radius: .6rem;
@@ -32,8 +58,79 @@ main{
   /*pegar o minimo entre os dois*/
   width: min(42.8rem, 90%);
 
-  /*!*para centralizar *! mas acima tem um melhor*/
-  /*margin: 0 auto;*/
-
   margin-top: -12rem;
+  text-align: center;
 }
+
+
+          /*DIV SCREEN1*/
+
+
+h1{
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.4rem;
+}
+
+
+h1, p{
+  color: #34355B;
+}
+
+
+p{
+  opacity: 0.8;
+}
+
+
+form{
+  margin-top: 4.8rem;
+
+  /*para colocar o button e o input um do lado do outro e centralizar*/
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+
+input, button{
+  border: none;
+  padding: 1.6rem;
+}
+
+
+input{
+  background-color: #DCE2E9;
+  width: 6rem;
+  border-radius: .4rem 0 0 .4rem;
+}
+
+
+
+        /* DIV SCREEN 2*/
+
+h2{
+  font-size: 2.4rem;
+  font-weight: normal;
+
+  margin-bottom: 3.3rem;
+}
+
+.screen2 button{
+  border-radius: .4rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
