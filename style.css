@@ -45,7 +45,7 @@ button:hover{
 
 
 .hide{
-  display: none;
+  display: none;     /* para esconder a div */
 }
 
 

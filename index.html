@@ -15,66 +15,85 @@
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Montserrat:wght@300;400;700&family=Public+Sans:wght@300;400;800&family=Roboto:wght@400;700&display=swap"
 				rel="stylesheet">
 </head>
-<body>
+	<body>
 
-<main>
+		<main>
 
-	<div class="screen1">
-		<h1>Jogo da Adivinhação</h1>
-		<p>Adivinhe o número entre 0 e 10!</p>
-		<form>
-			<input type="text" maxlength="1" id="inNumero">
-			<button onclick="jogar(event)" id="btnJogar">Tentar</button>
-		</form>
-	</div>
+			<div class="screen1">
 
-	<div class="screen2 hide">
-		<h2>Acertou em 3 Vezes</h2>
-		<button>Jogar novamente</button>
-	</div>
-	<h1 id="idResposta"></h1>
+				<h1>Jogo da Adivinhação</h1>
+				<p>Adivinhe o número entre 0 e 10!</p>
 
-</main>
+				<form>
 
-<script type="text/javascript">	<!--src="script.js"-->
+					<label for="inNumero"></label>
+					<input type="text" maxlength="1" id="inNumero">
+					<!--<button onclick="jogar(event)" id="btnJogar">Tentar</button>-->
 
-// VAI CRIAR UM NUMERO RANDOMICO ASSIM Q COMECAR - ANTES DA FUNÇÃO
+					<button id="btnTentar">Tentar</button>
 
-const randomNumber = Math.round(Math.random() * 10);
-let xTentavivas = 1;
+				</form>
 
-function jogar(evento){
+			</div>
 
-  evento.preventDefault();
+			<div class="screen2 hide">
 
-  const inNumero = document.querySelector("#inNumero");
+				<h2>Acertou em 3 Vezes</h2>
+				<button id="btnDeNovo">Jogar novamente</button>
 
-  // const inNumero = document.getElementById("inNumero");
-  // const numero   = inNumero.value;
+			</div>
 
-  if(Number(inNumero.value) === randomNumber){  // Number para transformar em numero
+			<h1 id="idResposta"></h1>
 
-    document.querySelector(".screen1").classList.add("hide");
-    document.querySelector(".screen2").classList.remove("hide");
+		</main>
 
-    // document.getElementById("screen1").classList.add("hide");    // PARA ADICIONAR A CLASSE HIDE(ESCONDER).
 
-    // document.getElementById("screen2").classList.remove("hide"); // PARA REMOVER A CLASSE HIDE(ESCONDER).
+		<script type="text/javascript">	<!--src="script.js"-->
 
-		document.querySelector(".screen2 h2").innerText = `vc acertou em: ${xTentavivas} Tentativas`
-		// alert("Te amo")
 
-  }else{
-    console.log("Voce Errou!!!");
-  }
+			// VAI CRIAR UM NUMERO RANDOMICO ASSIM Q COMECAR - ANTES DA FUNÇÃO
 
-  xTentavivas++;  	// O INCREMENTO SEMPRE FICA NO FINAL DA APLICAÇÃO
+			const randomNumber = Math.round(Math.random() * 10);
 
-}
+			let xTentavivas = 1; // iniciando a variavel em 1
 
-</script>
+			// FUNCAO CALLBACK //
+			function jogar(evento){
 
-</body>
+				evento.preventDefault();  // NAO DEIXA A PAGINA ATUALIZAR //
+
+				const inNumero = document.querySelector("#inNumero");
+
+				if(Number(inNumero.value) === randomNumber){  // Number para transformar em numero
+
+					document.querySelector(".screen1").classList.add("hide");
+					document.querySelector(".screen2").classList.remove("hide");
+
+					document.querySelector(".screen2 h2").innerText = `vc acertou em: ${xTentavivas} Tentativas`
+
+
+				}else{
+					console.log("Voce Errou!!!");
+				}
+
+				xTentavivas++;  	// O INCREMENTO SEMPRE FICA NO FINAL DA APLICAÇÃO
+
+			}
+
+      // EVENTOS //
+
+			const btnTentar = document.querySelector("#btnTentar");
+      const btnDeNovo = document.querySelector("#btnDeNovo");
+
+			btnTentar.addEventListener("click", jogar);
+      btnDeNovo.addEventListener("click", novaTentativa);
+
+
+
+
+		</script>
+
+	</body>
 
 </html>
 
